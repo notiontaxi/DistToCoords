@@ -25,7 +25,6 @@
       var circle, radius, _results;
       radius = this.distances[i - 2][i];
       circle = new Circle(new Point(this.points[i - 2].x, this.points[i - 2].y), radius);
-      console.log(circle);
       _results = [];
       while (!(this.coordinateFound(circle, point, i) || circle.currentAngle > Math.PI * 2)) {
         _results.push(circle.setToNextPixel());

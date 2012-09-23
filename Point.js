@@ -12,9 +12,7 @@
       var deltaX, deltaY, dist;
       deltaX = otherPoint.x - this.x;
       deltaY = otherPoint.y - this.y;
-      dist = (Math.round(Math.sqrt(deltaX * deltaX + deltaY * deltaY) * 10)) / 10;
-      console.log(dist);
-      return dist;
+      return dist = (Math.round(Math.sqrt(deltaX * deltaX + deltaY * deltaY) * 10)) / 10;
     };
 
     return Point;

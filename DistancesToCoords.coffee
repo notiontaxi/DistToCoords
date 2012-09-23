@@ -1,6 +1,5 @@
 class Converter
 
-
   constructor:(@points = [])->
     @precision = 1.0 ## should be between 0.1 and 1.0
 
@@ -18,28 +17,21 @@ class Converter
     ## radius == distance from reference point #1
     radius = @distances[i-2][i] ## 5
     circle = new Circle(new Point(@points[i-2].x, @points[i-2].y), radius)
-    console.log circle
-    ##console.log(circle)
     circle.setToNextPixel() until @coordinateFound(circle, point, i) or circle.currentAngle > Math.PI*2
 
     
   coordinateFound: (circle, point, i) -> 
     distance1 = circle.currentSpherePosition.distanceTo(@points[i-1]) 
     distance_1_OK = (distance1 - @distances[i][i-1]) < @precision
-    ##console.log @points[i-2]
     if i > 2
       distance2 = circle.currentSpherePosition.distanceTo(@points[i-3])
       distance_2_OK = (distance2 - @distances[i][i-3]) < @precision
-      ##console.log circle.currentSpherePosition
-      ##console.log distance1
-      ##console.log @points 
     else
       distance_2_OK = true
     
     positionFound = distance_1_OK and distance_2_OK    
-    ##console.log i
-    
     @points[i] = circle.currentSpherePosition if positionFound 
     positionFound
+
 
 window.Converter = Converter;
